@@ -1,7 +1,9 @@
 # Easy reloading of this file
 def uload(reload_routes = false)
   @rails_routes_loaded = !reload_routes
-  load "#{ENV['HOME']}/irb_util/util.rb"
+  #load "#{ENV['HOME']}/irb_util/util.rb"
+  puts "Reloading #{__FILE__}..."
+  load __FILE__
 end
 
 require 'active_record'
