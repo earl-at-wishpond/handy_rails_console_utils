@@ -1,0 +1,10 @@
+To use:
+
+Include the util.rb file in your .irbrc file, maybe like this:
+
+
+# I rock!
+puts "Loading Earl's Awesome Utils"
+load "#{ENV['HOME']}/irb_util/util.rb"
+
+
