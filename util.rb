@@ -34,6 +34,10 @@ end
 
 rails_routes
 
+def reroute(force = false)
+  ActionController::Routing::Routes.send(force ? :reload! : :reload)
+end
+
 
 # Access the console history
 def history
@@ -41,7 +45,7 @@ def history
 end
 
 def hgrep(match)
-  matched = history.select {|h| Regexp.new(match).match(h)}
+  matched = history.select {|h| begin Regexp.new(match).match(h) rescue nil end}
   puts matched
   matched.size
 end
@@ -85,7 +89,7 @@ class Hash
   end
 
   def respond_to?(sym, include_private = false)
-    super || self.has_key?(sym)
+    super || self.has_key?(sym) || self.has_key?(sym.to_s)
   end
 end
 
