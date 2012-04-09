@@ -20,6 +20,13 @@ class ActiveRecord::Base
   end
 end
 
+class ActiveRecord::Base
+  def ems
+    self.errors.full_messages
+  end
+end
+
+
 
 # Load up the routes so you can call url_for-based magic methods
 require 'action_controller'
